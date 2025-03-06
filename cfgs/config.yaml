@@ -1,6 +1,7 @@
 llm:
-    name: "gpt-4-turbo-2024-04-09"
+    name: "gpt-4-turbo"
     temperature: 0.01
+    api_base: "https://835758201.xyz/v1"
 embedding:
     name: "BAAI/bge-base-zh-v1.5"
     dim: 768 
