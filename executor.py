@@ -4,6 +4,7 @@ import sys
 import re
 import os
 import argparse
+import traceback
 
 import requests
 from pathlib import Path
@@ -326,8 +327,11 @@ class PipelineExecutor(Executor):
         if is_github_folder_url(path):
             urls = get_github_repo_contents(path)
             for url in urls:
-                print(f'(rag) 正在构建索引 {url}')
-                self.build_index(url, False)  # already deleted original collection
+                try:
+                    print(f'(rag) 正在构建索引 {url}')
+                    self.build_index(url, False)  # already deleted original collection
+                except RuntimeError as e:
+                    traceback.print_exc()
         elif path.endswith('.txt'):
             self.index._insert_doc_url(
                 url=path,
