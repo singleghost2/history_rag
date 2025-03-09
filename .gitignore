@@ -1,3 +1,4 @@
 .env
 *.pyc
 .vscode/
+flagged/log.csv
